@@ -4,6 +4,7 @@ body {
 }
 
 /* Styling for the navigation bar with two links and a title */
+
 .nav-bar {
   display: flex;
   flex-direction: row;
@@ -20,4 +21,45 @@ h3,
 
 header {
   background-color: black;
+}
+
+/* styling the landing page image */
+
+.landing-img {
+  height: 100%;
+  width: 100%;
+  margin-top: 3rem;
+  border-radius: 5px;
+}
+
+/* Styling for the button on the landing page */
+
+.try-it-div {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.try-it-btn {
+  text-align: center;
+  padding: 1rem 5rem;
+  font-family: Rokkitt, sans-serif;
+  font-size: 2rem;
+  color: white;
+  background-color: #a13629;
+  border: 2px solid white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px gray;
+}
+
+/* Styling for the landing page paragraph */
+
+.landing-para-div {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stories {
+  color: #a13629;
 }
