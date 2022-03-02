@@ -4,6 +4,7 @@ var $newStoryPage = document.querySelector('.new-story');
 var $landingPage = document.querySelector('.first-page');
 var $newLink = document.querySelector('.new-link');
 var $randomImg = document.querySelector('.random-art');
+var $form = document.querySelector('form');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -60,9 +61,13 @@ function getRandomArtImg(url) {
 // This function will allow a user to save their story and title along with
 // the image that was the source of inspiration.
 
-// var $form = document.querySelector('form');
+function handleSave(event) {
+
+}
 
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
 $newLink.addEventListener('click', handleNewClick);
+// when user clicks save it stores the users story, title, and image
+$form.addEventListener('submit', handleSave);
