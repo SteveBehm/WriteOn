@@ -62,7 +62,15 @@ function getRandomArtImg(url) {
 // the image that was the source of inspiration.
 
 function handleSave(event) {
+  var formObj = {};
 
+  var title = $form.elements.title.value;
+  var story = $form.elements.story.value;
+  var photoAddress = $randomImg.src;
+
+  formObj.title = title;
+  formObj.story = story;
+  formObj.photoAddress = photoAddress;
 }
 
 // when user clicks the try it button it swaps views and produces random image
