@@ -71,6 +71,7 @@ function handleSave(event) {
   formObj.title = title;
   formObj.story = story;
   formObj.photoAddress = photoAddress;
+  formObj.storyId = data.nextStoryId;
 }
 
 // when user clicks the try it button it swaps views and produces random image
