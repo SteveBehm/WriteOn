@@ -1,3 +1,4 @@
+// DOM querying for specific elements.
 var $tryItBtn = document.querySelector('.try-it-btn');
 var $newStoryPage = document.querySelector('.new-story');
 var $landingPage = document.querySelector('.first-page');
