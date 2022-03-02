@@ -77,7 +77,7 @@ function handleSave(event) {
 
   data.nextStoryId++;
   // here we will put the formObj into the data model's stories array
-  // data.stories.unshift(formObj);
+  data.stories.unshift(formObj);
 }
 
 // when user clicks the try it button it swaps views and produces random image
