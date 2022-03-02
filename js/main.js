@@ -62,6 +62,8 @@ function getRandomArtImg(url) {
 // the image that was the source of inspiration.
 
 function handleSave(event) {
+  // the formObj will be used to place an entry into the stories array that
+  // is within the data model.
   var formObj = {};
 
   var title = $form.elements.title.value;
@@ -72,6 +74,10 @@ function handleSave(event) {
   formObj.story = story;
   formObj.photoAddress = photoAddress;
   formObj.storyId = data.nextStoryId;
+
+  data.nextStoryId++;
+  // here we will put the formObj into the data model's stories array
+  // data.stories.unshift(formObj);
 }
 
 // when user clicks the try it button it swaps views and produces random image
