@@ -9,6 +9,7 @@ var $randomImg = document.querySelector('.random-art');
 function handleClickRandomImage(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story';
+  getRandomArtObject();
 }
 
 /* Function to change view to new stiory if user clicks new link */
@@ -18,9 +19,6 @@ function handleNewClick(event) {
   // below will get a new img if the user clicks on the new link
   getRandomArtObject();
 }
-
-$tryItBtn.addEventListener('click', handleClickRandomImage);
-$newLink.addEventListener('click', handleNewClick);
 
 // Retrieving list of objects from the API
 var xhr = new XMLHttpRequest();
@@ -50,5 +48,11 @@ function getRandomArtObject() {
   objectData.send();
 }
 
+// when user clicks the try it button it swaps views and produces random image
+$tryItBtn.addEventListener('click', handleClickRandomImage);
+// when user clicks the new button it swaps views and gets a new image
+$newLink.addEventListener('click', handleNewClick);
+// listens for a load event to make a request to the API
 xhr.addEventListener('load', getRandomArtObject);
+// sends the equest to the API
 xhr.send();
