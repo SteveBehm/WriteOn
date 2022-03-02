@@ -54,7 +54,7 @@ header {
 /* Styling for the landing page paragraph */
 
 .landing-para-div {
-  height: 40vh;
+  margin-top: 9rem;
   display: flex;
   align-items: center;
   justify-content: center;
