@@ -1,0 +1,118 @@
+body {
+  font-family: Rokkitt, sans-serif;
+  background-color: #dfe7e2;
+}
+
+/* STYLING FOR THE LANDING PAGE */
+
+/* Styling for the navigation bar with two links and a title */
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+}
+
+h3,
+.new-link,
+.library-link {
+  color: white;
+}
+
+header {
+  background-color: black;
+}
+
+/* styling the all the images */
+
+.img-styling {
+  width: 100%;
+  margin-top: 3rem;
+  border-radius: 5px;
+}
+
+/* Styling for the button on the landing page */
+
+.try-it-div {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.try-it-btn {
+  text-align: center;
+  padding: 1rem 5rem;
+  font-family: Rokkitt, sans-serif;
+  font-size: 2rem;
+  color: white;
+  background-color: #a13629;
+  border: 2px solid white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px gray;
+}
+
+/* Styling for the landing page paragraph */
+
+.landing-para-div {
+  margin-top: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stories {
+  color: #a13629;
+}
+
+/* STYLING FOR THE ENTRY PAGE */
+
+/* styling for the input and textareas */
+input,
+textarea {
+  width: 100%;
+  border: solid 2px lightgrey;
+  border-radius: 5px;
+}
+
+/* specific styling for the title input field */
+input {
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 18px;
+  font-family: Rokkitt, sans-serif;
+}
+
+.story-inputs {
+  margin: 1rem 0;
+}
+
+label {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+/* styling for the SAVE button */
+
+.column-link {
+  width: 50%;
+  margin: 0;
+}
+
+.opposite-ends {
+  display: flex;
+}
+
+.save-btn-div {
+  display: flex;
+  justify-content: right;
+  margin: 1rem 0;
+}
+
+.save-btn {
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
+}

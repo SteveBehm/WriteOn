@@ -8,11 +8,73 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rokkitt">
 </head>
 <body>
   <header>
+    <div class="container">
+      <div class="row">
+        <div class="column-full nav-bar">
+          <a class="library-link" href="#">Library</a>
+          <h3>Storyteller</h3>
+          <a class="new-link" href="#">NEW</a>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div data-view="landing-page" class="container first-page">
+      <div class="row">
+        <div class="column-full">
+          <img class="img-styling" alt="typewriter typing stories matter" src="images/Stories Matter.jpg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-full try-it-div">
+          <button class="try-it-btn" type="button">Try it!</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column-full landing-para-div">
+          <p class="landing-text">Create <span class="stories">stories</span> based off famous art!</p>
+        </div>
+      </div>
+    </div>
+    <div data-view="create-story" class="container new-story hidden">
+      <form>
+        <div class="row">
+          <div class="column-full">
+            <img alt="random piece of artwork" src="images/Stories Matter.jpg" class="img-styling random-art">
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full story-inputs">
+            <label for="title">Title</label>
+            <input required type="text" id="title" name="title">
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full story-inputs">
+            <label for="story">Story</label>
+            <textarea required id="story" name="story" rows="20"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full opposite-ends">
+            <div class="column-link">
+              <div class="delete-btn">
+                <a class="hidden" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="column-link">
+              <div class="save-btn-div">
+                <button class="save-btn" type="submit">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
