@@ -3,6 +3,8 @@ body {
   background-color: #dfe7e2;
 }
 
+/* STYLING FOR THE LANDING PAGE */
+
 /* Styling for the navigation bar with two links and a title */
 
 .nav-bar {
@@ -23,10 +25,9 @@ header {
   background-color: black;
 }
 
-/* styling the landing page image */
+/* styling the all the images */
 
-.landing-img {
-  height: 100%;
+.img-styling {
   width: 100%;
   margin-top: 3rem;
   border-radius: 5px;
@@ -62,4 +63,56 @@ header {
 
 .stories {
   color: #a13629;
+}
+
+/* STYLING FOR THE ENTRY PAGE */
+
+/* styling for the input and textareas */
+input,
+textarea {
+  width: 100%;
+  border: solid 2px lightgrey;
+  border-radius: 5px;
+}
+
+/* specific styling for the title input field */
+input {
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 18px;
+  font-family: Rokkitt, sans-serif;
+}
+
+.story-inputs {
+  margin: 1rem 0;
+}
+
+label {
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+/* styling for the SAVE button */
+
+.column-link {
+  width: 50%;
+  margin: 0;
+}
+
+.opposite-ends {
+  display: flex;
+}
+
+.save-btn-div {
+  display: flex;
+  justify-content: right;
+  margin: 1rem 0;
+}
+
+.save-btn {
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
 }

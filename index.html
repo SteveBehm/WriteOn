@@ -26,7 +26,7 @@
     <div data-view="landing-page" class="container hidden">
       <div class="row">
         <div class="column-full">
-          <img class="landing-img" alt="typewriter typing stories matter" src="images/Stories Matter.jpg">
+          <img class="img-styling" alt="typewriter typing stories matter" src="images/Stories Matter.jpg">
         </div>
       </div>
       <div class="row">
@@ -44,17 +44,35 @@
       <form>
         <div class="row">
           <div class="column-full">
-            <img alt="random piece of artwork" src="images/Stories Matter.jpg" class="random-art">
+            <img alt="random piece of artwork" src="images/Stories Matter.jpg" class="img-styling random-art">
           </div>
         </div>
         <div class="row">
-          <label for="title">Title</label>
-          <input required type="text" id="title" name="title">
-          <label for="story">Story</label>
-          <input required type="text" id="story" name="story">
+          <div class="column-full story-inputs">
+            <label for="title">Title</label>
+            <input required type="text" id="title" name="title">
+          </div>
         </div>
-        <div class="row"></div>
-        <div class="row"></div>
+        <div class="row">
+          <div class="column-full story-inputs">
+            <label for="story">Story</label>
+            <textarea required id="story" name="story" rows="20"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full opposite-ends">
+            <div class="column-link">
+              <div class="delete-btn">
+                <a class="hidden" href="#">Delete</a>
+              </div>
+            </div>
+            <div class="column-link">
+              <div class="save-btn-div">
+                <button class="save-btn" type="submit">SAVE</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   </main>
