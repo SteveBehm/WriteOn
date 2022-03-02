@@ -51,9 +51,16 @@ function getRandomArtObject() {
   xhr.send();
 }
 
+// This function will take a url as a parameter and set that url to the
+// image's src attribute value
 function getRandomArtImg(url) {
   $randomImg.setAttribute('src', url);
 }
+
+// This function will allow a user to save their story and title along with
+// the image that was the source of inspiration.
+
+// var $form = document.querySelector('form');
 
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
