@@ -4,6 +4,7 @@ var $newStoryPage = document.querySelector('.new-story');
 var $landingPage = document.querySelector('.first-page');
 var $newLink = document.querySelector('.new-link');
 var $randomImg = document.querySelector('.random-art');
+var $form = document.querySelector('form');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -51,11 +52,39 @@ function getRandomArtObject() {
   xhr.send();
 }
 
+// This function will take a url as a parameter and set that url to the
+// image's src attribute value
 function getRandomArtImg(url) {
   $randomImg.setAttribute('src', url);
+}
+
+// This function will allow a user to save their story and title along with
+// the image that was the source of inspiration.
+
+function handleSave(event) {
+  // the formObj will be used to place an entry into the stories array that
+  // is within the data model.
+  var formObj = {};
+
+  var title = $form.elements.title.value;
+  var story = $form.elements.story.value;
+  var photoAddress = $randomImg.src;
+
+  formObj.title = title;
+  formObj.story = story;
+  formObj.photoAddress = photoAddress;
+  formObj.storyId = data.nextStoryId;
+
+  data.nextStoryId++;
+  // here we will prepend the formObj into the data model's stories array
+  data.stories.unshift(formObj);
+  // now we need to reset the form's input values as well
+  formObj.reset();
 }
 
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
 $newLink.addEventListener('click', handleNewClick);
+// when user clicks save it stores the users story, title, and image
+$form.addEventListener('submit', handleSave);
