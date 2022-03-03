@@ -182,11 +182,23 @@ function handleRefresh(event) {
 // this function will help with event delegation by listening to
 // clicks on the list items parent element UL
 function handleEditClick(event) {
+  // below will switch the view from the story library to the
+  // story entry page when the edit icon is clicked
   if (event.target && event.target.nodeName === 'I') {
     $landingPage.className = 'first-page hidden container';
     $newStoryPage.className = 'container new-story';
     $storyLibrary.className = 'container hidden stories';
     data.view = 'create-story';
+  }
+  // this will find the matching entry object in the data model and
+  // assign it to the data model's editing property if an edit icon
+  // was clicked
+  var $closestLi = event.target.closest('li');
+  var $closestLiId = parseInt($closestLi.getAttribute('data-entry-id'));
+  for (var i = 0; i < data.stories.length; i++) {
+    if ($closestLiId === data.stories[i].storyId) {
+      data.editing = data.entries[i];
+    }
   }
 }
 
