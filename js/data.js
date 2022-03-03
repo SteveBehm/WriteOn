@@ -8,7 +8,7 @@ var data = {
 
 // here we are gathering local storage from the previous visit or
 // prior to the last refresh
-var previousStoriesJSON = localStorage.getItem('local-storage');
+var previousStoriesJSON = localStorage.getItem('story-data');
 
 // if the local storage was not empty then we update the data model
 // with the previous data the user was using
@@ -20,7 +20,7 @@ if (previousStoriesJSON !== null) {
 // that can be storage before the user refreshes or loses the page
 function handleBeforeUnload(event) {
   var localStorageData = JSON.stringify(data);
-  localStorage.setItem('local-storage', localStorageData);
+  localStorage.setItem('story-data', localStorageData);
 }
 
 window.addEventListener('beforeunload', handleBeforeUnload);

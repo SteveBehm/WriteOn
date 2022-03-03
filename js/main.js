@@ -3,23 +3,38 @@ var $tryItBtn = document.querySelector('.try-it-btn');
 var $newStoryPage = document.querySelector('.new-story');
 var $landingPage = document.querySelector('.first-page');
 var $newLink = document.querySelector('.new-link');
+var $libraryLink = document.querySelector('.library-link');
 var $randomImg = document.querySelector('.random-art');
 var $form = document.querySelector('form');
 var $unorderedList = document.querySelector('ul');
+var $storyLibrary = document.querySelector('.stories');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story';
+  $storyLibrary.className = 'container stories hidden';
   getRandomArtObject();
+  data.view = 'create-story';
 }
 
 /* Function to change view to new stiory if user clicks new link */
 function handleNewClick(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story';
+  $storyLibrary.className = 'container stories hidden';
   // below will get a new img if the user clicks on the new link
   getRandomArtObject();
+  data.view = 'create-story';
+}
+
+// this function will allow the user to go to the story library if they
+// click on the library link
+function handleLibraryClick(event) {
+  $landingPage.className = 'first-page container hidden';
+  $newStoryPage.className = 'container new-story hidden';
+  $storyLibrary.className = 'container stories';
+  data.view = 'story-library';
 }
 
 function getRandomArtObject() {
@@ -63,6 +78,7 @@ function getRandomArtImg(url) {
 // the image that was the source of inspiration.
 
 function handleSave(event) {
+  event.preventDefault();
   // the formObj will be used to place an entry into the stories array that
   // is within the data model.
   var formObj = {};
@@ -80,7 +96,7 @@ function handleSave(event) {
   // here we will prepend the formObj into the data model's stories array
   data.stories.unshift(formObj);
   // now we need to reset the form's input values as well
-  formObj.reset();
+  $form.reset();
 
   // a story $entry is the return from the formObj being passed
   // as an argument in the newStory DOM creation function.
@@ -88,6 +104,13 @@ function handleSave(event) {
   // the story is added to the top of the UL
   var $entry = newStory(formObj);
   $unorderedList.prepend($entry);
+
+  $landingPage.className = 'first-page container hidden';
+  $newStoryPage.className = 'container new-story hidden';
+  $storyLibrary.className = 'container stories';
+  // this will switch the view to the story library and set the data.view to
+  // the correct view
+  data.view = 'story-library';
 }
 
 // this function will create a DOM tree from an entry
@@ -133,10 +156,13 @@ function handleRefresh(event) {
     $unorderedList.appendChild($stories);
   }
 }
+
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
 $newLink.addEventListener('click', handleNewClick);
+// when the user click the library link it will show the story library
+$libraryLink.addEventListener('click', handleLibraryClick);
 // when user clicks save it stores the users story, title, and image
 $form.addEventListener('submit', handleSave);
 // this event listener will be used for the DOMContentLoaded event

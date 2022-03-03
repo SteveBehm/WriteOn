@@ -61,7 +61,7 @@ header {
   justify-content: center;
 }
 
-.stories {
+.red {
   color: #a13629;
 }
 
@@ -133,4 +133,9 @@ ul {
 .library-para {
   max-height: 20vh;
   overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
