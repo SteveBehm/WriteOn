@@ -182,7 +182,12 @@ function handleRefresh(event) {
 // this function will help with event delegation by listening to
 // clicks on the list items parent element UL
 function handleEditClick(event) {
-
+  if (event.target && event.target.nodeName === 'I') {
+    $landingPage.className = 'first-page hidden container';
+    $newStoryPage.className = 'container new-story';
+    $storyLibrary.className = 'container hidden stories';
+    data.view = 'create-story';
+  }
 }
 
 // when user clicks the try it button it swaps views and produces random image
