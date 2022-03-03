@@ -179,6 +179,12 @@ function handleRefresh(event) {
   }
 }
 
+// this function will help with event delegation by listening to
+// clicks on the list items parent element UL
+function handleEditClick(event) {
+
+}
+
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
@@ -189,3 +195,6 @@ $libraryLink.addEventListener('click', handleLibraryClick);
 $form.addEventListener('submit', handleSave);
 // this event listener will be used for the DOMContentLoaded event
 window.addEventListener('DOMContentLoaded', handleRefresh);
+// when a user clicks on the child element of the UL this function will
+// run. Used for when the user clicks the edit icon.
+$unorderedList.addEventListener('click', handleEditClick);
