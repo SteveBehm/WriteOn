@@ -133,11 +133,19 @@ function newStory(entry) {
   $textColumnDiv.className = 'column-half';
   $listItem.appendChild($textColumnDiv);
 
+  var $iconTitleDiv = document.createElement('div');
+  $iconTitleDiv.className = 'edit-icon';
+  $textColumnDiv.appendChild($iconTitleDiv);
+
   var $storyTitle = document.createElement('h3');
   var $storyTitleText = document.createTextNode(entry.title);
   $storyTitle.appendChild($storyTitleText);
   $storyTitle.className = 'library-title';
-  $textColumnDiv.appendChild($storyTitle);
+  $iconTitleDiv.appendChild($storyTitle);
+
+  var $icon = document.createElement('i');
+  $icon.className = 'fas fa-pencil-alt';
+  $iconTitleDiv.appendChild($icon);
 
   var $storyPara = document.createElement('p');
   var $storyParaText = document.createTextNode(entry.story);
