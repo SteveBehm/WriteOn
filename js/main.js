@@ -118,6 +118,7 @@ function handleSave(event) {
 function newStory(entry) {
   var $listItem = document.createElement('li');
   $listItem.className = 'row';
+  $listItem.setAttribute('data-entry-id', entry.storyId);
 
   var $imgDiv = document.createElement('div');
   $imgDiv.className = 'column-half';
