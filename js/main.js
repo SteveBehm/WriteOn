@@ -82,7 +82,7 @@ function handleSave(event) {
   // now we need to reset the form's input values as well
   formObj.reset();
 
-  // a story entry is the return from the formObj being passed
+  // a story $entry is the return from the formObj being passed
   // as an argument in the newStory DOM creation function.
   // then we take that entry and prepend to the UL so that
   // the story is added to the top of the UL
@@ -119,9 +119,20 @@ function newStory(entry) {
 
   return $listItem;
 }
+
+// This loop will create a DOM tree for each story entry in the data
+// model and append it to the page when the DOMContentLoaded event fires
+function handleRefresh(event) {
+  for (var i = 0; i < data.stories.length; i++) {
+    var $stories = newStory(data.stories[i]);
+    $unorderedList.appendChild($stories);
+  }
+}
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
 $newLink.addEventListener('click', handleNewClick);
 // when user clicks save it stores the users story, title, and image
 $form.addEventListener('submit', handleSave);
+// this event listener will be used for the DOMContentLoaded event
+window.addEventListener('DOMContentLoaded', handleRefresh);
