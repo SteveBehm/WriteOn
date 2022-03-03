@@ -118,8 +118,10 @@ label {
 }
 
 /* styling for the story library page */
-li {
-  display: flex;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .library-title {
