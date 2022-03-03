@@ -103,6 +103,7 @@ function newStory(entry) {
   var $img = document.createElement('img');
   $img.setAttribute('alt', 'random image');
   $img.setAttribute('src', entry.photoAddress);
+  $img.className = 'img-styling random-art';
   $imgDiv.appendChild($img);
 
   var $textColumnDiv = document.createElement('div');
@@ -110,10 +111,14 @@ function newStory(entry) {
   $listItem.appendChild($textColumnDiv);
 
   var $storyTitle = document.createElement('h3');
+  var $storyTitleText = document.createTextNode(entry.title);
+  $storyTitle.appendChild($storyTitleText);
   $storyTitle.className = 'library-title';
   $textColumnDiv.appendChild($storyTitle);
 
   var $storyPara = document.createElement('p');
+  var $storyParaText = document.createTextNode(entry.story);
+  $storyPara.appendChild($storyParaText);
   $storyPara.className = 'library-para';
   $textColumnDiv.appendChild($storyPara);
 
