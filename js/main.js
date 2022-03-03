@@ -5,6 +5,7 @@ var $landingPage = document.querySelector('.first-page');
 var $newLink = document.querySelector('.new-link');
 var $randomImg = document.querySelector('.random-art');
 var $form = document.querySelector('form');
+var $unorderedList = document.querySelector('ul');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -80,8 +81,44 @@ function handleSave(event) {
   data.stories.unshift(formObj);
   // now we need to reset the form's input values as well
   formObj.reset();
+
+  // a story entry is the return from the formObj being passed
+  // as an argument in the newStory DOM creation function.
+  // then we take that entry and prepend to the UL so that
+  // the story is added to the top of the UL
+  var $entry = newStory(formObj);
+  $unorderedList.prepend($entry);
 }
 
+// this function will create a DOM tree from an entry
+// that matches a story entry from the UL.
+function newStory(entry) {
+  var $listItem = document.createElement('li');
+  $listItem.className = 'row';
+
+  var $imgDiv = document.createElement('div');
+  $imgDiv.className = 'column-half';
+  $listItem.appendChild($imgDiv);
+
+  var $img = document.createElement('img');
+  $img.setAttribute('alt', 'random image');
+  $img.setAttribute('src', entry.photoAddress);
+  $imgDiv.appendChild($img);
+
+  var $textColumnDiv = document.createElement('div');
+  $textColumnDiv.className = 'column-half';
+  $listItem.appendChild($textColumnDiv);
+
+  var $storyTitle = document.createElement('h3');
+  $storyTitle.className = 'library-title';
+  $textColumnDiv.appendChild($storyTitle);
+
+  var $storyPara = document.createElement('p');
+  $storyPara.className = 'library-para';
+  $textColumnDiv.appendChild($storyPara);
+
+  return $listItem;
+}
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
