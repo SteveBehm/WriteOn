@@ -197,9 +197,14 @@ function handleEditClick(event) {
   var $closestLiId = parseInt($closestLi.getAttribute('data-entry-id'));
   for (var i = 0; i < data.stories.length; i++) {
     if ($closestLiId === data.stories[i].storyId) {
-      data.editing = data.entries[i];
+      data.editing = data.stories[i];
     }
   }
+  // pre-populate the story entry form with the clicked entry's
+  // values that are now in the editing property of the data model
+  $form.elements.title.value = data.editing.title;
+  $form.elements.story.value = data.editing.story;
+  $randomImg.src = data.editing.photoAddress;
 }
 
 // when user clicks the try it button it swaps views and produces random image
