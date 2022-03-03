@@ -116,3 +116,19 @@ label {
   border-radius: 5px;
   padding: 6px 18px;
 }
+
+/* styling for the story library page */
+li {
+  display: flex;
+}
+
+.library-title {
+  margin-top: 3rem;
+  margin-bottom: 0;
+  color: black;
+}
+
+.library-para {
+  max-height: 20vh;
+  overflow: scroll;
+}
