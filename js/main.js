@@ -155,6 +155,19 @@ function handleRefresh(event) {
     var $stories = newStory(data.stories[i]);
     $unorderedList.appendChild($stories);
   }
+  if (data.view === 'landing-page') {
+    $landingPage.className = 'first-page container';
+    $newStoryPage.className = 'container hidden new-story';
+    $storyLibrary.className = 'container hidden stories';
+  } else if (data.view === 'create-story') {
+    $landingPage.className = 'first-page hidden container';
+    $newStoryPage.className = 'container new-story';
+    $storyLibrary.className = 'container hidden stories';
+  } else if (data.view === 'story-library') {
+    $landingPage.className = 'first-page hidden container';
+    $newStoryPage.className = 'container hidden new-story';
+    $storyLibrary.className = 'container stories';
+  }
 }
 
 // when user clicks the try it button it swaps views and produces random image
