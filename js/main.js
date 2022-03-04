@@ -13,6 +13,15 @@ var $deleteBtn = document.querySelector('.delete-btn');
 var $modalDiv = document.querySelector('.bg-modal');
 var $cancelBtn = document.querySelector('.cancel-button');
 var $confirmBtn = document.querySelector('.confirm-button');
+var $logo = document.querySelector('.storyteller');
+
+// function to switch to landing page is user clicks logo
+function handleLogoClick(event) {
+  $landingPage.className = 'first-page container';
+  $newStoryPage.className = 'container new-story hidden';
+  $storyLibrary.className = 'container stories hidden';
+  data.view = 'landing-page';
+}
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -296,6 +305,8 @@ function handleConfirmDelete(event) {
   $form.reset();
 }
 
+// when a user clicks on the logo go to the landing page
+$logo.addEventListener('click', handleLogoClick);
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image

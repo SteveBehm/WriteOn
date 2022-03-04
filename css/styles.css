@@ -29,6 +29,10 @@ header {
   font-size: 1.5rem;
 }
 
+.storyteller:hover {
+  cursor: pointer;
+}
+
 /* styling the all the images */
 
 .img-styling {
