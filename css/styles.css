@@ -25,6 +25,14 @@ header {
   background-color: black;
 }
 
+.storyteller {
+  font-size: 1.5rem;
+}
+
+.storyteller:hover {
+  cursor: pointer;
+}
+
 /* styling the all the images */
 
 .img-styling {
@@ -94,19 +102,12 @@ label {
 
 /* styling for the SAVE button */
 
-.column-link {
-  width: 50%;
-  margin: 0;
-}
-
-.opposite-ends {
-  display: flex;
-}
-
 .save-btn-div {
-  display: flex;
-  justify-content: right;
   margin: 1rem 0;
+}
+
+.save-right {
+  justify-content: right;
 }
 
 .save-btn {
@@ -150,4 +151,89 @@ ul {
 
 i {
   margin-top: 3rem;
+}
+
+/* styling for the link that allows a user to delete an entry */
+
+.column-link {
+  width: 50%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.opposite-ends {
+  display: flex;
+}
+
+.delete-link {
+  align-items: center;
+  justify-content: left;
+}
+
+.delete-btn {
+  color: white;
+  background-color: #a13629;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
+}
+
+/* modal stlying for when a user clicks delete on a story */
+
+.bg-modal {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0 0 0 / 80%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.display-not {
+  display: none;
+}
+
+.display {
+  display: flex;
+}
+
+.modal-content {
+  height: 150px;
+  width: 400px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-button {
+  color: white;
+  background-color: red;
+  font-size: 14px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px black;
+}
+
+.cancel-button {
+  color: black;
+  background-color: lightgrey;
+  font-size: 14px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btns-div {
+  width: 80%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
 }

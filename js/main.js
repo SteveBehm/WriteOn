@@ -9,12 +9,26 @@ var $form = document.querySelector('form');
 var $unorderedList = document.querySelector('ul');
 var $storyLibrary = document.querySelector('.stories');
 var $noStories = document.querySelector('.no-stories-para');
+var $deleteBtn = document.querySelector('.delete-btn');
+var $modalDiv = document.querySelector('.bg-modal');
+var $cancelBtn = document.querySelector('.cancel-button');
+var $confirmBtn = document.querySelector('.confirm-button');
+var $logo = document.querySelector('.storyteller');
+
+// function to switch to landing page is user clicks logo
+function handleLogoClick(event) {
+  $landingPage.className = 'first-page container';
+  $newStoryPage.className = 'container new-story hidden';
+  $storyLibrary.className = 'container stories hidden';
+  data.view = 'landing-page';
+}
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story';
   $storyLibrary.className = 'container stories hidden';
+  $deleteBtn.className = 'delete-btn hidden';
   getRandomArtObject();
   data.view = 'create-story';
 }
@@ -24,6 +38,7 @@ function handleNewClick(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story';
   $storyLibrary.className = 'container stories hidden';
+  $deleteBtn.className = 'delete-btn hidden';
   // below will get a new img if the user clicks on the new link
   getRandomArtObject();
   data.view = 'create-story';
@@ -38,6 +53,7 @@ function handleLibraryClick(event) {
     $landingPage.className = 'first-page container hidden';
     $newStoryPage.className = 'container new-story hidden';
     $storyLibrary.className = 'container stories';
+    $deleteBtn.className = 'delete-btn hidden';
   }
   data.view = 'story-library';
 }
@@ -220,6 +236,7 @@ function handleEditClick(event) {
     $landingPage.className = 'first-page hidden container';
     $newStoryPage.className = 'container new-story';
     $storyLibrary.className = 'container hidden stories';
+    $deleteBtn.className = 'delete-btn';
     data.view = 'create-story';
   }
   // this will find the matching entry object in the data model and
@@ -239,6 +256,57 @@ function handleEditClick(event) {
   $randomImg.src = data.editing.photoAddress;
 }
 
+// function to show confirmation modal when the user clicks delete
+function handleDeleteClick(event) {
+  $modalDiv.className = 'bg-modal display';
+}
+
+// user clicking cancel will exit the modal prompt
+function handleCancelClick(event) {
+  $modalDiv.className = 'bg-modal display-not';
+}
+
+// function to remove the story from the data model and the story's
+// DOM tree from the page when the user confirms delete
+function handleConfirmDelete(event) {
+  // exit the modal window
+  $modalDiv.className = 'bg-modal display-not';
+
+  // using a splice method will allow us to remove the story from
+  // the data.stories array
+  for (var i = 0; i < data.stories.length; i++) {
+    if (data.stories[i].storyId === data.editing.storyId) {
+      data.stories.splice(i, 1);
+    }
+  }
+
+  // now we need to remove the entry from the DOM
+  var $listItems = document.querySelectorAll('li');
+
+  for (var j = 0; j < $listItems.length; j++) {
+    var $listItemsId = $listItems[j].getAttribute('data-entry-id');
+    var $listItemsIdInt = parseInt($listItemsId);
+    if ($listItemsIdInt === data.editing.storyId) {
+      $listItems[j].remove();
+    }
+  }
+
+  // let user see the story library once they confirm delete
+  if (data.stories.length === 0) {
+    $noStories.className = 'no-stories-para';
+  } else {
+    $landingPage.className = 'first-page container hidden';
+    $newStoryPage.className = 'container new-story hidden';
+    $storyLibrary.className = 'container stories';
+    $deleteBtn.className = 'delete-btn hidden';
+  }
+  data.view = 'story-library';
+  data.editing = null;
+  $form.reset();
+}
+
+// when a user clicks on the logo go to the landing page
+$logo.addEventListener('click', handleLogoClick);
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
@@ -252,3 +320,9 @@ window.addEventListener('DOMContentLoaded', handleRefresh);
 // when a user clicks on the child element of the UL this function will
 // run. Used for when the user clicks the edit icon.
 $unorderedList.addEventListener('click', handleEditClick);
+// listen for when a user clicks the delete button
+$deleteBtn.addEventListener('click', handleDeleteClick);
+// listen for when a user clicks the cancel button
+$cancelBtn.addEventListener('click', handleCancelClick);
+// listen for when a user clicks confirm to delete a story
+$confirmBtn.addEventListener('click', handleConfirmDelete);
