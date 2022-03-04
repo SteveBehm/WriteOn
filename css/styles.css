@@ -193,6 +193,14 @@ i {
   display: none;
 }
 
+.display-not {
+  display: none;
+}
+
+.display {
+  display: flex;
+}
+
 .modal-content {
   height: 150px;
   width: 400px;

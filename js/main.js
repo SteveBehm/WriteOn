@@ -258,19 +258,19 @@ function handleEditClick(event) {
 
 // function to show confirmation modal when the user clicks delete
 function handleDeleteClick(event) {
-  $modalDiv.style.display = 'flex';
+  $modalDiv.className = 'bg-modal display';
 }
 
 // user clicking cancel will exit the modal prompt
 function handleCancelClick(event) {
-  $modalDiv.style.display = 'none';
+  $modalDiv.className = 'bg-modal display-not';
 }
 
 // function to remove the story from the data model and the story's
 // DOM tree from the page when the user confirms delete
 function handleConfirmDelete(event) {
   // exit the modal window
-  $modalDiv.style.display = 'none';
+  $modalDiv.className = 'bg-modal display-not';
 
   // using a splice method will allow us to remove the story from
   // the data.stories array
