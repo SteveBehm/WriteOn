@@ -25,6 +25,10 @@ header {
   background-color: black;
 }
 
+.storyteller {
+  font-size: 1.5rem;
+}
+
 /* styling the all the images */
 
 .img-styling {

@@ -12,6 +12,7 @@ var $noStories = document.querySelector('.no-stories-para');
 var $deleteBtn = document.querySelector('.delete-btn');
 var $modalDiv = document.querySelector('.bg-modal');
 var $cancelBtn = document.querySelector('.cancel-button');
+var $confirmBtn = document.querySelector('.confirm-button');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -256,6 +257,45 @@ function handleCancelClick(event) {
   $modalDiv.style.display = 'none';
 }
 
+// function to remove the story from the data model and the story's
+// DOM tree from the page when the user confirms delete
+function handleConfirmDelete(event) {
+  // exit the modal window
+  $modalDiv.style.display = 'none';
+
+  // using a splice method will allow us to remove the story from
+  // the data.stories array
+  for (var i = 0; i < data.stories.length; i++) {
+    if (data.stories[i].storyId === data.editing.storyId) {
+      data.stories.splice(i, 1);
+    }
+  }
+
+  // now we need to remove the entry from the DOM
+  var $listItems = document.querySelectorAll('li');
+
+  for (var j = 0; j < $listItems.length; j++) {
+    var $listItemsId = $listItems[j].getAttribute('data-entry-id');
+    var $listItemsIdInt = parseInt($listItemsId);
+    if ($listItemsIdInt === data.editing.storyId) {
+      $listItems[j].remove();
+    }
+  }
+
+  // let user see the story library once they confirm delete
+  if (data.stories.length === 0) {
+    $noStories.className = 'no-stories-para';
+  } else {
+    $landingPage.className = 'first-page container hidden';
+    $newStoryPage.className = 'container new-story hidden';
+    $storyLibrary.className = 'container stories';
+    $deleteBtn.className = 'delete-btn hidden';
+  }
+  data.view = 'story-library';
+  data.editing = null;
+  $form.reset();
+}
+
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
@@ -273,3 +313,5 @@ $unorderedList.addEventListener('click', handleEditClick);
 $deleteBtn.addEventListener('click', handleDeleteClick);
 // listen for when a user clicks the cancel button
 $cancelBtn.addEventListener('click', handleCancelClick);
+// listen for when a user clicks confirm to delete a story
+$confirmBtn.addEventListener('click', handleConfirmDelete);
