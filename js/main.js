@@ -11,6 +11,7 @@ var $storyLibrary = document.querySelector('.stories');
 var $noStories = document.querySelector('.no-stories-para');
 var $deleteBtn = document.querySelector('.delete-btn');
 var $modalDiv = document.querySelector('.bg-modal');
+var $cancelBtn = document.querySelector('.cancel-button');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -250,6 +251,11 @@ function handleDeleteClick(event) {
   $modalDiv.style.display = 'flex';
 }
 
+// user clicking cancel will exit the modal prompt
+function handleCancelClick(event) {
+  $modalDiv.style.display = 'none';
+}
+
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
@@ -265,3 +271,5 @@ window.addEventListener('DOMContentLoaded', handleRefresh);
 $unorderedList.addEventListener('click', handleEditClick);
 // listen for when a user clicks the delete button
 $deleteBtn.addEventListener('click', handleDeleteClick);
+// listen for when a user clicks the cancel button
+$cancelBtn.addEventListener('click', handleCancelClick);
