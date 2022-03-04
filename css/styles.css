@@ -3,8 +3,6 @@ body {
   background-color: #dfe7e2;
 }
 
-/* STYLING FOR THE LANDING PAGE */
-
 /* Styling for the navigation bar with two links and a title */
 
 .nav-bar {
@@ -76,8 +74,6 @@ header {
 .red {
   color: #a13629;
 }
-
-/* STYLING FOR THE ENTRY PAGE */
 
 /* styling for the input and textareas */
 input,
