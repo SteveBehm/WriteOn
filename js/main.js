@@ -8,6 +8,7 @@ var $randomImg = document.querySelector('.random-art');
 var $form = document.querySelector('form');
 var $unorderedList = document.querySelector('ul');
 var $storyLibrary = document.querySelector('.stories');
+var $noStories = document.querySelector('.no-stories-para');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -31,9 +32,13 @@ function handleNewClick(event) {
 // this function will allow the user to go to the story library if they
 // click on the library link
 function handleLibraryClick(event) {
-  $landingPage.className = 'first-page container hidden';
-  $newStoryPage.className = 'container new-story hidden';
-  $storyLibrary.className = 'container stories';
+  if (data.stories.length === 0) {
+    $noStories.className = 'no-stories-para';
+  } else {
+    $landingPage.className = 'first-page container hidden';
+    $newStoryPage.className = 'container new-story hidden';
+    $storyLibrary.className = 'container stories';
+  }
   data.view = 'story-library';
 }
 
@@ -79,35 +84,59 @@ function getRandomArtImg(url) {
 
 function handleSave(event) {
   event.preventDefault();
+  // below we will update the handleSave function to conditionally
+  // add a new entry object or update the existing one.
+  if (data.editing !== null) {
+    data.editing.title = $form.elements.title.value;
+    data.editing.story = $form.elements.story.value;
+    data.editing.photoAddress = $randomImg.src;
+
+    // conditionally add a new entry DOM tree or replace the existing
+    // DOM tree
+    var $listItems = document.querySelectorAll('li');
+
+    for (var i = 0; i < $listItems.length; i++) {
+      var $listItemId = $listItems[i].getAttribute('data-entry-id');
+      var $listItemIdInt = parseInt($listItemId);
+      if ($listItemIdInt === data.editing.storyId) {
+        $listItems[i].replaceWith(newStory(data.editing));
+      }
+    }
+    $form.reset();
+    data.editing = null;
+  } else {
   // the formObj will be used to place an entry into the stories array that
   // is within the data model.
-  var formObj = {};
+    var formObj = {};
 
-  var title = $form.elements.title.value;
-  var story = $form.elements.story.value;
-  var photoAddress = $randomImg.src;
+    var title = $form.elements.title.value;
+    var story = $form.elements.story.value;
+    var photoAddress = $randomImg.src;
 
-  formObj.title = title;
-  formObj.story = story;
-  formObj.photoAddress = photoAddress;
-  formObj.storyId = data.nextStoryId;
+    formObj.title = title;
+    formObj.story = story;
+    formObj.photoAddress = photoAddress;
+    formObj.storyId = data.nextStoryId;
 
-  data.nextStoryId++;
-  // here we will prepend the formObj into the data model's stories array
-  data.stories.unshift(formObj);
-  // now we need to reset the form's input values as well
-  $form.reset();
+    data.nextStoryId++;
+    // here we will prepend the formObj into the data model's stories array
+    data.stories.unshift(formObj);
+    // now we need to reset the form's input values as well
+    $form.reset();
 
-  // a story $entry is the return from the formObj being passed
-  // as an argument in the newStory DOM creation function.
-  // then we take that entry and prepend to the UL so that
-  // the story is added to the top of the UL
-  var $entry = newStory(formObj);
-  $unorderedList.prepend($entry);
-
+    // a story $entry is the return from the formObj being passed
+    // as an argument in the newStory DOM creation function.
+    // then we take that entry and prepend to the UL so that
+    // the story is added to the top of the UL
+    var $entry = newStory(formObj);
+    $unorderedList.prepend($entry);
+  }
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story hidden';
   $storyLibrary.className = 'container stories';
+
+  // make sure the paragraph indicating there are no stories in the library is hidden
+  $noStories.className = 'no-stories-para hidden';
   // this will switch the view to the story library and set the data.view to
   // the correct view
   data.view = 'story-library';
@@ -118,6 +147,7 @@ function handleSave(event) {
 function newStory(entry) {
   var $listItem = document.createElement('li');
   $listItem.className = 'row';
+  $listItem.setAttribute('data-entry-id', entry.storyId);
 
   var $imgDiv = document.createElement('div');
   $imgDiv.className = 'column-half';
@@ -133,11 +163,19 @@ function newStory(entry) {
   $textColumnDiv.className = 'column-half';
   $listItem.appendChild($textColumnDiv);
 
+  var $iconTitleDiv = document.createElement('div');
+  $iconTitleDiv.className = 'edit-icon';
+  $textColumnDiv.appendChild($iconTitleDiv);
+
   var $storyTitle = document.createElement('h3');
   var $storyTitleText = document.createTextNode(entry.title);
   $storyTitle.appendChild($storyTitleText);
   $storyTitle.className = 'library-title';
-  $textColumnDiv.appendChild($storyTitle);
+  $iconTitleDiv.appendChild($storyTitle);
+
+  var $icon = document.createElement('i');
+  $icon.className = 'fas fa-pencil-alt';
+  $iconTitleDiv.appendChild($icon);
 
   var $storyPara = document.createElement('p');
   var $storyParaText = document.createTextNode(entry.story);
@@ -168,6 +206,37 @@ function handleRefresh(event) {
     $newStoryPage.className = 'container hidden new-story';
     $storyLibrary.className = 'container stories';
   }
+  if (data.stories.length === 0) {
+    $noStories.className = 'no-stories-para';
+  }
+}
+
+// this function will help with event delegation by listening to
+// clicks on the list items parent element UL
+function handleEditClick(event) {
+  // below will switch the view from the story library to the
+  // story entry page when the edit icon is clicked
+  if (event.target && event.target.nodeName === 'I') {
+    $landingPage.className = 'first-page hidden container';
+    $newStoryPage.className = 'container new-story';
+    $storyLibrary.className = 'container hidden stories';
+    data.view = 'create-story';
+  }
+  // this will find the matching entry object in the data model and
+  // assign it to the data model's editing property if an edit icon
+  // was clicked
+  var $closestLi = event.target.closest('li');
+  var $closestLiId = parseInt($closestLi.getAttribute('data-entry-id'));
+  for (var i = 0; i < data.stories.length; i++) {
+    if ($closestLiId === data.stories[i].storyId) {
+      data.editing = data.stories[i];
+    }
+  }
+  // pre-populate the story entry form with the clicked entry's
+  // values that are now in the editing property of the data model
+  $form.elements.title.value = data.editing.title;
+  $form.elements.story.value = data.editing.story;
+  $randomImg.src = data.editing.photoAddress;
 }
 
 // when user clicks the try it button it swaps views and produces random image
@@ -180,3 +249,6 @@ $libraryLink.addEventListener('click', handleLibraryClick);
 $form.addEventListener('submit', handleSave);
 // this event listener will be used for the DOMContentLoaded event
 window.addEventListener('DOMContentLoaded', handleRefresh);
+// when a user clicks on the child element of the UL this function will
+// run. Used for when the user clicks the edit icon.
+$unorderedList.addEventListener('click', handleEditClick);

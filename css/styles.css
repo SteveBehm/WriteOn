@@ -139,3 +139,15 @@ ul {
   width: 0;
   background: transparent;
 }
+
+/* Styling for the icon when editing an entry */
+.edit-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+i {
+  margin-top: 3rem;
+}
