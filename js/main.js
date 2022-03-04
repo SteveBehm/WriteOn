@@ -8,6 +8,7 @@ var $randomImg = document.querySelector('.random-art');
 var $form = document.querySelector('form');
 var $unorderedList = document.querySelector('ul');
 var $storyLibrary = document.querySelector('.stories');
+var $noStories = document.querySelector('.no-stories-para');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -31,9 +32,13 @@ function handleNewClick(event) {
 // this function will allow the user to go to the story library if they
 // click on the library link
 function handleLibraryClick(event) {
-  $landingPage.className = 'first-page container hidden';
-  $newStoryPage.className = 'container new-story hidden';
-  $storyLibrary.className = 'container stories';
+  if (data.stories.length === 0) {
+    $noStories.className = 'no-stories-para';
+  } else {
+    $landingPage.className = 'first-page container hidden';
+    $newStoryPage.className = 'container new-story hidden';
+    $storyLibrary.className = 'container stories';
+  }
   data.view = 'story-library';
 }
 
@@ -85,6 +90,20 @@ function handleSave(event) {
     data.editing.title = $form.elements.title.value;
     data.editing.story = $form.elements.story.value;
     data.editing.photoAddress = $randomImg.src;
+
+    // conditionally add a new entry DOM tree or replace the existing
+    // DOM tree
+    var $listItems = document.querySelectorAll('li');
+
+    for (var i = 0; i < $listItems.length; i++) {
+      var $listItemId = $listItems[i].getAttribute('data-entry-id');
+      var $listItemIdInt = parseInt($listItemId);
+      if ($listItemIdInt === data.editing.storyId) {
+        $listItems[i].replaceWith(newStory(data.editing));
+      }
+    }
+    $form.reset();
+    data.editing = null;
   } else {
   // the formObj will be used to place an entry into the stories array that
   // is within the data model.
@@ -115,6 +134,9 @@ function handleSave(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story hidden';
   $storyLibrary.className = 'container stories';
+
+  // make sure the paragraph indicating there are no stories in the library is hidden
+  $noStories.className = 'no-stories-para hidden';
   // this will switch the view to the story library and set the data.view to
   // the correct view
   data.view = 'story-library';
@@ -183,6 +205,9 @@ function handleRefresh(event) {
     $landingPage.className = 'first-page hidden container';
     $newStoryPage.className = 'container hidden new-story';
     $storyLibrary.className = 'container stories';
+  }
+  if (data.stories.length === 0) {
+    $noStories.className = 'no-stories-para';
   }
 }
 
