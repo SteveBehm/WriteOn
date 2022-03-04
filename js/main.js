@@ -10,6 +10,7 @@ var $unorderedList = document.querySelector('ul');
 var $storyLibrary = document.querySelector('.stories');
 var $noStories = document.querySelector('.no-stories-para');
 var $deleteBtn = document.querySelector('.delete-btn');
+var $modalDiv = document.querySelector('.bg-modal');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
@@ -244,6 +245,11 @@ function handleEditClick(event) {
   $randomImg.src = data.editing.photoAddress;
 }
 
+// function to show confirmation modal when the user clicks delete
+function handleDeleteClick(event) {
+  $modalDiv.style.display = 'flex';
+}
+
 // when user clicks the try it button it swaps views and produces random image
 $tryItBtn.addEventListener('click', handleClickRandomImage);
 // when user clicks the new button it swaps views and gets a new image
@@ -257,3 +263,5 @@ window.addEventListener('DOMContentLoaded', handleRefresh);
 // when a user clicks on the child element of the UL this function will
 // run. Used for when the user clicks the edit icon.
 $unorderedList.addEventListener('click', handleEditClick);
+// listen for when a user clicks the delete button
+$deleteBtn.addEventListener('click', handleDeleteClick);
