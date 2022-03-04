@@ -13,6 +13,8 @@ body {
   align-items: center;
   justify-content: space-between;
   background-color: black;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 h3,
@@ -27,6 +29,8 @@ header {
 
 .storyteller {
   font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
 }
 
 .storyteller:hover {
