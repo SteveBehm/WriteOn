@@ -79,32 +79,39 @@ function getRandomArtImg(url) {
 
 function handleSave(event) {
   event.preventDefault();
+  // below we will update the handleSave function to conditionally
+  // add a new entry object or update the existing one.
+  if (data.editing !== null) {
+    data.editing.title = $form.elements.title.value;
+    data.editing.story = $form.elements.story.value;
+    data.editing.photoAddress = $randomImg.src;
+  } else {
   // the formObj will be used to place an entry into the stories array that
   // is within the data model.
-  var formObj = {};
+    var formObj = {};
 
-  var title = $form.elements.title.value;
-  var story = $form.elements.story.value;
-  var photoAddress = $randomImg.src;
+    var title = $form.elements.title.value;
+    var story = $form.elements.story.value;
+    var photoAddress = $randomImg.src;
 
-  formObj.title = title;
-  formObj.story = story;
-  formObj.photoAddress = photoAddress;
-  formObj.storyId = data.nextStoryId;
+    formObj.title = title;
+    formObj.story = story;
+    formObj.photoAddress = photoAddress;
+    formObj.storyId = data.nextStoryId;
 
-  data.nextStoryId++;
-  // here we will prepend the formObj into the data model's stories array
-  data.stories.unshift(formObj);
-  // now we need to reset the form's input values as well
-  $form.reset();
+    data.nextStoryId++;
+    // here we will prepend the formObj into the data model's stories array
+    data.stories.unshift(formObj);
+    // now we need to reset the form's input values as well
+    $form.reset();
 
-  // a story $entry is the return from the formObj being passed
-  // as an argument in the newStory DOM creation function.
-  // then we take that entry and prepend to the UL so that
-  // the story is added to the top of the UL
-  var $entry = newStory(formObj);
-  $unorderedList.prepend($entry);
-
+    // a story $entry is the return from the formObj being passed
+    // as an argument in the newStory DOM creation function.
+    // then we take that entry and prepend to the UL so that
+    // the story is added to the top of the UL
+    var $entry = newStory(formObj);
+    $unorderedList.prepend($entry);
+  }
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story hidden';
   $storyLibrary.className = 'container stories';
