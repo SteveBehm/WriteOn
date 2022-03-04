@@ -94,19 +94,12 @@ label {
 
 /* styling for the SAVE button */
 
-.column-link {
-  width: 50%;
-  margin: 0;
-}
-
-.opposite-ends {
-  display: flex;
-}
-
 .save-btn-div {
-  display: flex;
-  justify-content: right;
   margin: 1rem 0;
+}
+
+.save-right {
+  justify-content: right;
 }
 
 .save-btn {
@@ -150,4 +143,30 @@ ul {
 
 i {
   margin-top: 3rem;
+}
+
+/* styling for the link that allows a user to delete an entry */
+
+.column-link {
+  width: 50%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.opposite-ends {
+  display: flex;
+}
+
+.delete-link {
+  align-items: center;
+  justify-content: left;
+}
+
+.delete-btn {
+  color: white;
+  background-color: #a13629;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 18px;
 }

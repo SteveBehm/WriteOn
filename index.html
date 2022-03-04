@@ -65,11 +65,11 @@
         <div class="row">
           <div class="column-full opposite-ends">
             <div class="column-link">
-              <div class="delete-btn">
-                <a class="hidden" href="#">Delete</a>
+              <div class="delete-link">
+                <button class="delete-btn hidden" type="button">Delete</button>
               </div>
             </div>
-            <div class="column-link">
+            <div class="column-link save-right">
               <div class="save-btn-div">
                 <button class="save-btn" type="submit">SAVE</button>
               </div>
@@ -86,6 +86,15 @@
       </div>
     </div>
   </main>
+  <div class="bg-modal hidden">
+    <div class="modal-content">
+      <h4 class="modal-header">Are you sure you want to delete this entry?</h4>
+      <div class="no-btn">
+        <button class="cancel-button">CANCEL</button>
+        <button class="confirm-button">CONFIRM</button>
+      </div>
+    </div>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

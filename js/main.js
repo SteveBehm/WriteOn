@@ -9,12 +9,14 @@ var $form = document.querySelector('form');
 var $unorderedList = document.querySelector('ul');
 var $storyLibrary = document.querySelector('.stories');
 var $noStories = document.querySelector('.no-stories-para');
+var $deleteBtn = document.querySelector('.delete-btn');
 
 /* Function to change view to new stiory if user clicks try it */
 function handleClickRandomImage(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story';
   $storyLibrary.className = 'container stories hidden';
+  $deleteBtn.className = 'delete-btn hidden';
   getRandomArtObject();
   data.view = 'create-story';
 }
@@ -24,6 +26,7 @@ function handleNewClick(event) {
   $landingPage.className = 'first-page container hidden';
   $newStoryPage.className = 'container new-story';
   $storyLibrary.className = 'container stories hidden';
+  $deleteBtn.className = 'delete-btn hidden';
   // below will get a new img if the user clicks on the new link
   getRandomArtObject();
   data.view = 'create-story';
@@ -38,6 +41,7 @@ function handleLibraryClick(event) {
     $landingPage.className = 'first-page container hidden';
     $newStoryPage.className = 'container new-story hidden';
     $storyLibrary.className = 'container stories';
+    $deleteBtn.className = 'delete-btn hidden';
   }
   data.view = 'story-library';
 }
@@ -220,6 +224,7 @@ function handleEditClick(event) {
     $landingPage.className = 'first-page hidden container';
     $newStoryPage.className = 'container new-story';
     $storyLibrary.className = 'container hidden stories';
+    $deleteBtn.className = 'delete-btn';
     data.view = 'create-story';
   }
   // this will find the matching entry object in the data model and
