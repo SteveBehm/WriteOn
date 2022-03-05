@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Rokkitt
+- Font Author: Copyright 2016 The Rokkit Project Authors (https://github.com/googlefonts/RokkittFont)
+- Font Source: http://fonts.gstatic.com/s/rokkitt/v27/qFdb35qfgYFjGy5hukqqhw5XeRgdi1ryd5DLE76HvN6n.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
