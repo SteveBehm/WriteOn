@@ -14,6 +14,7 @@ var $modalDiv = document.querySelector('.bg-modal');
 var $cancelBtn = document.querySelector('.cancel-button');
 var $confirmBtn = document.querySelector('.confirm-button');
 var $logo = document.querySelector('.storyteller');
+var $spinner = document.querySelector('.spinner');
 
 // function to switch to landing page is user clicks logo
 function handleLogoClick(event) {
@@ -81,10 +82,12 @@ function getRandomArtObject() {
     // the getRandomArtImg function will then change the value or the src attr
     // to the value of objectData.response.primaryImage
     objectData.addEventListener('load', function () {
+      $spinner.className = 'spinner hidden';
       getRandomArtImg(objectData.response.primaryImage);
     });
     objectData.send();
   });
+  $spinner.className = 'spinner';
   // sends the request to the API
   xhr.send();
 }
