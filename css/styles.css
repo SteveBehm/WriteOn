@@ -19,6 +19,7 @@ h3,
 .new-link,
 .library-link {
   color: white;
+  text-decoration: none;
 }
 
 header {
@@ -33,6 +34,17 @@ header {
 
 .storyteller:hover {
   cursor: pointer;
+  color: #a13629;
+}
+
+.library-link:hover {
+  cursor: pointer;
+  color: #a13629;
+}
+
+.new-link:hover {
+  cursor: pointer;
+  color: #a13629;
 }
 
 /* styling the all the images */
@@ -60,6 +72,11 @@ header {
   border: 2px solid white;
   border-radius: 8px;
   box-shadow: 0 2px 5px gray;
+}
+
+.try-it-btn:hover {
+  cursor: pointer;
+  color: black;
 }
 
 /* Styling for the landing page paragraph */
@@ -118,6 +135,11 @@ label {
   padding: 6px 18px;
 }
 
+.save-btn:hover {
+  cursor: pointer;
+  color: #a13629;
+}
+
 /* styling for the story library page */
 ul {
   list-style-type: none;
@@ -154,6 +176,11 @@ i {
   margin-top: 3rem;
 }
 
+i:hover {
+  cursor: pointer;
+  color: #a13629;
+}
+
 /* styling for the link that allows a user to delete an entry */
 
 .column-link {
@@ -178,6 +205,11 @@ i {
   border: none;
   border-radius: 5px;
   padding: 6px 18px;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+  color: black;
 }
 
 /* modal stlying for when a user clicks delete on a story */
@@ -223,6 +255,11 @@ i {
   box-shadow: 0 1px 3px black;
 }
 
+.confirm-button:hover {
+  cursor: pointer;
+  color: black;
+}
+
 .cancel-button {
   color: black;
   background-color: lightgrey;
@@ -230,6 +267,11 @@ i {
   padding: 8px 18px;
   border: none;
   border-radius: 5px;
+}
+
+.cancel-button:hover {
+  cursor: pointer;
+  color: white;
 }
 
 .btns-div {
