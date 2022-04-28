@@ -15,6 +15,19 @@ var $cancelBtn = document.querySelector('.cancel-button');
 var $confirmBtn = document.querySelector('.confirm-button');
 var $logo = document.querySelector('.storyteller');
 var $spinner = document.querySelector('.spinner');
+var $okayBtn = document.querySelector('.okay-button');
+
+// show the network connection issue modal
+function displayNetworkAlert() {
+  var $networkModal = document.querySelector('.network-check');
+  $networkModal.className = 'bg-modal network-check display';
+}
+
+// hide the network connection issue modal
+function hideNetworkAlert() {
+  var $networkModal = document.querySelector('.network-check');
+  $networkModal.className = 'bg-modal network-check';
+}
 
 // function to switch to landing page is user clicks logo
 function handleLogoClick(event) {
@@ -62,11 +75,7 @@ function handleLibraryClick(event) {
 function getRandomArtObject() {
   // Retrieving list of objects from the API
   var xhr = new XMLHttpRequest();
-  // eslint-disable-next-line no-console
-  console.log('UNSENT:', xhr.status);
   xhr.open('GET', 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=art');
-  // eslint-disable-next-line no-console
-  console.log('OPENED', xhr.status);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     // below produces a random string version of an objectId that has an image value
@@ -89,8 +98,26 @@ function getRandomArtObject() {
       $spinner.className = 'spinner hidden';
       getRandomArtImg(objectData.response.primaryImage);
     });
+
+    xhr.addEventListener('error', function () {
+      var status = xhr.status;
+      if (status !== 200) {
+        displayNetworkAlert();
+        $spinner.className = 'spinner hidden';
+      }
+    });
+
     objectData.send();
   });
+
+  xhr.addEventListener('error', function () {
+    var status = xhr.status;
+    if (status !== 200) {
+      displayNetworkAlert();
+      $spinner.className = 'spinner hidden';
+    }
+  });
+
   $spinner.className = 'spinner';
   // sends the request to the API
   xhr.send();
@@ -333,3 +360,5 @@ $deleteBtn.addEventListener('click', handleDeleteClick);
 $cancelBtn.addEventListener('click', handleCancelClick);
 // listen for when a user clicks confirm to delete a story
 $confirmBtn.addEventListener('click', handleConfirmDelete);
+// list for user to click the okay button if there network connection is bad
+$okayBtn.addEventListener('click', hideNetworkAlert);
