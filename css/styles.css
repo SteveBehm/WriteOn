@@ -10,7 +10,6 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #292929;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -23,7 +22,8 @@ h3,
   font-size: 1.3rem;
 }
 
-header {
+header,
+.nav-bar {
   background-color: #292929;
 }
 
@@ -33,27 +33,13 @@ header {
   text-decoration: none;
 }
 
-.storyteller:hover {
-  cursor: pointer;
-  color: #a13629;
-}
-
-.library-link:hover {
-  cursor: pointer;
-  color: #a13629;
-}
-
-.new-link:hover {
-  cursor: pointer;
-  color: #a13629;
-}
-
-/* styling the all the images */
+/* styling all the images */
 
 .img-styling {
   width: 100%;
   margin-top: 3rem;
   border-radius: 5px;
+  box-shadow: 0 2px 5px gray;
 }
 
 /* Styling for the button on the landing page */
@@ -75,11 +61,6 @@ header {
   box-shadow: 0 2px 5px gray;
 }
 
-.try-it-btn:hover {
-  cursor: pointer;
-  color: #292929;
-}
-
 /* Styling for the landing page paragraph */
 
 .landing-para-div {
@@ -87,9 +68,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.landing-text {
   font-size: 2rem;
 }
 
@@ -101,8 +79,9 @@ header {
 input,
 textarea {
   width: 100%;
-  border: solid 2px lightgrey;
+  border: none;
   border-radius: 5px;
+  box-shadow: 0 2px 5px gray;
 }
 
 /* specific styling for the title input field */
@@ -149,11 +128,7 @@ label {
   border: none;
   border-radius: 5px;
   padding: 6px 18px;
-}
-
-.save-btn:hover {
-  cursor: pointer;
-  color: #a13629;
+  box-shadow: 0 2px 5px gray;
 }
 
 /* styling for the story library page */
@@ -174,6 +149,7 @@ ul {
   max-height: 20vh;
   overflow: scroll;
   line-height: 1.5;
+  color: #292929;
 }
 
 ::-webkit-scrollbar {
@@ -189,14 +165,15 @@ ul {
   justify-content: space-between;
 }
 
-.pencil-icon {
-  color: #292929;
-}
-
 i {
+  color: #292929;
   margin-top: 3rem;
 }
 
+.storyteller:hover,
+.library-link:hover,
+.new-link:hover,
+.save-btn:hover,
 i:hover {
   cursor: pointer;
   color: #a13629;
@@ -226,11 +203,6 @@ i:hover {
   border: none;
   border-radius: 5px;
   padding: 6px 18px;
-}
-
-.delete-btn:hover {
-  cursor: pointer;
-  color: #292929;
 }
 
 /* modal stlying for when a user clicks delete on a story */
@@ -268,7 +240,7 @@ i:hover {
 
 .confirm-button {
   color: white;
-  background-color: red;
+  background-color: #a13629;
   font-size: 1rem;
   padding: 8px 18px;
   border: none;
@@ -278,7 +250,7 @@ i:hover {
 
 .okay-button {
   color: white;
-  background-color: red;
+  background-color: #a13629;
   font-size: 1rem;
   padding: 8px 18px;
   border: none;
@@ -286,7 +258,10 @@ i:hover {
   box-shadow: 0 1px 3px #292929;
 }
 
-.confirm-button:hover {
+.confirm-button:hover,
+.delete-btn:hover,
+.try-it-btn:hover,
+.okay-button:hover {
   cursor: pointer;
   color: #292929;
 }
