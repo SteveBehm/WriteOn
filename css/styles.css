@@ -10,7 +10,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: black;
+  background-color: #292929;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -20,14 +20,15 @@ h3,
 .library-link {
   color: white;
   text-decoration: none;
+  font-size: 1.3rem;
 }
 
 header {
-  background-color: black;
+  background-color: #292929;
 }
 
 .storyteller {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: white;
   text-decoration: none;
 }
@@ -69,23 +70,27 @@ header {
   font-size: 2rem;
   color: white;
   background-color: #a13629;
-  border: 2px solid white;
+  border: none;
   border-radius: 8px;
   box-shadow: 0 2px 5px gray;
 }
 
 .try-it-btn:hover {
   cursor: pointer;
-  color: black;
+  color: #292929;
 }
 
 /* Styling for the landing page paragraph */
 
 .landing-para-div {
-  margin-top: 9rem;
+  margin-top: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.landing-text {
+  font-size: 2rem;
 }
 
 .red {
@@ -108,6 +113,11 @@ input {
   font-family: Rokkitt, sans-serif;
 }
 
+input:focus,
+textarea:focus {
+  outline-color: lightslategray;
+}
+
 .story-inputs {
   margin: 1rem 0;
 }
@@ -116,6 +126,11 @@ label {
   display: inline-block;
   padding-bottom: 0.5rem;
   font-size: 2rem;
+}
+
+.title-label,
+.story-label {
+  color: #292929;
 }
 
 /* styling for the SAVE button */
@@ -130,7 +145,7 @@ label {
 
 .save-btn {
   color: white;
-  background-color: black;
+  background-color: #292929;
   border: none;
   border-radius: 5px;
   padding: 6px 18px;
@@ -151,7 +166,7 @@ ul {
 .library-title {
   margin-top: 3rem;
   margin-bottom: 0;
-  color: black;
+  color: #292929;
   font-size: 2rem;
 }
 
@@ -172,6 +187,10 @@ ul {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.pencil-icon {
+  color: #292929;
 }
 
 i {
@@ -211,7 +230,7 @@ i:hover {
 
 .delete-btn:hover {
   cursor: pointer;
-  color: black;
+  color: #292929;
 }
 
 /* modal stlying for when a user clicks delete on a story */
@@ -254,16 +273,16 @@ i:hover {
   padding: 8px 18px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 1px 3px black;
+  box-shadow: 0 1px 3px #292929;
 }
 
 .confirm-button:hover {
   cursor: pointer;
-  color: black;
+  color: #292929;
 }
 
 .cancel-button {
-  color: black;
+  color: #292929;
   background-color: lightgrey;
   font-size: 1rem;
   padding: 8px 18px;
