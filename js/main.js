@@ -193,7 +193,7 @@ function newStory(entry) {
   $iconTitleDiv.appendChild($storyTitle);
 
   var $icon = document.createElement('i');
-  $icon.className = 'fas fa-pencil-alt';
+  $icon.className = 'fas fa-pencil-alt pencil-icon';
   $iconTitleDiv.appendChild($icon);
 
   var $storyPara = document.createElement('p');
