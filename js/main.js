@@ -62,7 +62,11 @@ function handleLibraryClick(event) {
 function getRandomArtObject() {
   // Retrieving list of objects from the API
   var xhr = new XMLHttpRequest();
+  // eslint-disable-next-line no-console
+  console.log('UNSENT:', xhr.status);
   xhr.open('GET', 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=art');
+  // eslint-disable-next-line no-console
+  console.log('OPENED', xhr.status);
   xhr.responseType = 'json';
   xhr.addEventListener('load', function () {
     // below produces a random string version of an objectId that has an image value
