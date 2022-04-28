@@ -98,10 +98,20 @@ function getRandomArtObject() {
       $spinner.className = 'spinner hidden';
       getRandomArtImg(objectData.response.primaryImage);
     });
+
+    xhr.addEventListener('error', function () {
+      var status = xhr.status;
+      if (status !== 200) {
+        displayNetworkAlert();
+        $spinner.className = 'spinner hidden';
+      }
+    });
+
     objectData.send();
   });
 
   xhr.addEventListener('error', function () {
+    var status = xhr.status;
     if (status !== 200) {
       displayNetworkAlert();
       $spinner.className = 'spinner hidden';
