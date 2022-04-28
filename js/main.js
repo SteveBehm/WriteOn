@@ -17,33 +17,16 @@ var $logo = document.querySelector('.storyteller');
 var $spinner = document.querySelector('.spinner');
 var $okayBtn = document.querySelector('.okay-button');
 
-// check the users internet connection
-function testConnectivity() {
-  var newReq = new XMLHttpRequest();
-  newReq.open('GET', 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=art');
-  newReq.onreadystatechange = function () {
-    if (newReq.readyState === XMLHttpRequest.DONE) {
-      var status = newReq.status;
-      if (status !== 200) {
-        displayNetworkAlert();
-        $spinner.className = 'spinner hidden';
-      }
-    }
-  };
-  newReq.send();
-}
-testConnectivity();
-
 // show the network connection issue modal
 function displayNetworkAlert() {
   var $networkModal = document.querySelector('.network-check');
-  $networkModal.className = 'big-modal network-check display';
+  $networkModal.className = 'bg-modal network-check display';
 }
 
 // hide the network connection issue modal
 function hideNetworkAlert() {
   var $networkModal = document.querySelector('.network-check');
-  $networkModal.className = 'big-modal network-check';
+  $networkModal.className = 'bg-modal network-check';
 }
 
 // function to switch to landing page is user clicks logo
@@ -117,6 +100,14 @@ function getRandomArtObject() {
     });
     objectData.send();
   });
+
+  xhr.addEventListener('error', function () {
+    if (status !== 200) {
+      displayNetworkAlert();
+      $spinner.className = 'spinner hidden';
+    }
+  });
+
   $spinner.className = 'spinner';
   // sends the request to the API
   xhr.send();
